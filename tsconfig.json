@@ -9,8 +9,8 @@
       "@Components/*": ["src/components/*"],
       "@Lib/*": ["src/lib/*"],
       "@Navigation/*": ["src/navigation/*"],
-      "@Screens/*": ["src/screens/*"],
-      "@Types/*": ["src/types/*"]
+      "@Types/*": ["src/types/*"],
+      "@Views/*": ["src/views/*"]
     }
   }
 }
