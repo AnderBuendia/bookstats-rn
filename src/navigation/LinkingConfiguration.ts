@@ -6,13 +6,9 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
-      Root: {
+      Home: {
         screens: {
-          Home: {
-            screens: {
-              HomeScreen: 'home',
-            },
-          },
+          HomeScreen: 'home',
         },
       },
       NotFound: '*',

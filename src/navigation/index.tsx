@@ -33,7 +33,7 @@ function RootNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Root"
+        name="Home"
         component={HomeScreen}
         options={{ headerShown: false }}
       />

@@ -7,6 +7,8 @@
     "paths": {
       "*": ["src/*"],
       "@Components/*": ["src/components/*"],
+      "@Enums/*": ["src/enums/*"],
+      "@Interfaces/*": ["src/interfaces/*"],
       "@Lib/*": ["src/lib/*"],
       "@Navigation/*": ["src/navigation/*"],
       "@Types/*": ["src/types/*"],
