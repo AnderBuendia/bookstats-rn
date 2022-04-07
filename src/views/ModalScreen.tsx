@@ -1,7 +1,7 @@
 import type { FC, Dispatch, SetStateAction } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Modal, Platform, Pressable, StyleSheet } from 'react-native';
-import { Text, View } from '@Components/Themed';
+import { Text, View } from '@Components/generic/Theme/Themed';
 
 export type ModalScreenProps = {
   showLoginModal: boolean;
