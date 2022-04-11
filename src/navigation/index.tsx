@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 import LinkingConfiguration from '@Navigation/LinkingConfiguration';
-import ModalScreen from '@Views/ModalScreen';
+import LoginScreen from '@Views/LoginScreen';
 import NotFoundScreen from '@Views/NotFoundScreen';
 import HomeScreen from '@Views/HomeScreen';
 import type { RootStackParamList } from '@Types/main.type';
@@ -43,7 +43,7 @@ function RootNavigator() {
         options={{ title: 'Oops!' }}
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Modal" component={ModalScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );

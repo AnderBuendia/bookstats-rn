@@ -1,28 +1,22 @@
 import type { FC } from 'react';
-import { useState } from 'react';
-import { Rating } from 'react-simple-star-rating';
 import { StyleSheet, View as DefaultView } from 'react-native';
+import { Rating } from 'react-simple-star-rating';
 import type { RouteProp } from '@react-navigation/native';
 import type { RootStackParamList } from '@Types/main.type';
+import type { Book } from '@Interfaces/domain/book.interface';
 
 export type StarRatingProps = {
   route: RouteProp<RootStackParamList, 'Home'>;
+  book: Book;
 };
 
-const StarRating: FC<StarRatingProps> = ({ route }) => {
-  const [rating, setRating] = useState<number>(0);
-
-  const handleRating = (rate: number) => {
-    setRating(rate);
-  };
-
+const StarRating: FC<StarRatingProps> = ({ route, book }) => {
   return (
     <DefaultView>
       <Rating
         readonly={route.name === 'Home'}
-        size={30}
-        ratingValue={rating}
-        onClick={handleRating}
+        size={28}
+        ratingValue={book.rating}
       />
     </DefaultView>
   );

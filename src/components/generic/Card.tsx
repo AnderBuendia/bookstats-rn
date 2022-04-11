@@ -2,6 +2,7 @@ import type { FC } from 'react';
 import { StyleSheet, Pressable, View as DefaultView } from 'react-native';
 import type { RouteProp } from '@react-navigation/native';
 import Colors from '@Lib/constants/Colors';
+import { getColorStatus } from '@Domain/book.domain';
 import { Text, View } from '@Components/generic/Theme/Themed';
 import StarRating from '@Components/generic/StarRating';
 import type { RootStackParamList } from '@Types/main.type';
@@ -15,21 +16,28 @@ export type CardProps = {
 const Card: FC<CardProps> = ({ books, route }) => {
   return (
     <>
-      {books?.map((book) => (
-        <Pressable key={book.id}>
-          <View style={styles.cardContainer}>
-            <DefaultView style={styles.cardContainer__top}>
-              <Text>{book.title}</Text>
-              <Text>{book.author}</Text>
-            </DefaultView>
+      {books?.map((book) => {
+        const styleStatus = getColorStatus(book.status);
 
-            <DefaultView style={styles.cardContainer__bottom}>
-              <Text>{book.status}</Text>
-              <StarRating route={route} />
-            </DefaultView>
-          </View>
-        </Pressable>
-      ))}
+        return (
+          <Pressable key={book.id}>
+            <View style={styles.cardContainer}>
+              <DefaultView style={styles.cardContainer__top}>
+                <Text>{book.title}</Text>
+                <Text>{book.author}</Text>
+              </DefaultView>
+
+              <DefaultView style={styles.cardContainer__bottom}>
+                <Text style={[styleStatus, styles.bookStatus]}>
+                  {book.status}
+                </Text>
+
+                <StarRating route={route} book={book} />
+              </DefaultView>
+            </View>
+          </Pressable>
+        );
+      })}
     </>
   );
 };
@@ -52,6 +60,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  bookStatus: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    borderRadius: 20,
+    paddingVertical: 1,
+    paddingHorizontal: 10,
   },
 });
 

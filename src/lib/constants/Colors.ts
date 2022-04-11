@@ -16,6 +16,10 @@ export default {
     tabIconDefault: '#ccc',
     tabIconSelected: tintColorDark,
   },
+  bg_100: {
+    text: '#a1a1a1',
+    background: '#a1a1a1',
+  },
   bg_300: {
     text: '#2F3B52',
     background: '#2F3B52',
@@ -27,6 +31,10 @@ export default {
   bg_700: {
     text: '#1D1E26',
     background: '#1D1E26',
+  },
+  primary_100: {
+    text: '#DBEAFE',
+    background: '#DBEAFE',
   },
   primary_300: {
     text: '#B3B3FF',
@@ -52,6 +60,10 @@ export default {
     text: '#458787',
     background: '#458787',
   },
+  error_100: {
+    text: '#FEE2E2',
+    background: '#FEE2E2',
+  },
   error_300: {
     text: '#DD6F6F',
     background: '#DD6F6F',
@@ -64,6 +76,10 @@ export default {
     text: '#C22525',
     background: '#C22525',
   },
+  warning_100: {
+    text: '#fde281',
+    background: '#fde281',
+  },
   warning_300: {
     text: '#FCD64D',
     background: '#FCD64D',
@@ -73,7 +89,23 @@ export default {
     background: '#FBC500',
   },
   warning_700: {
-    text: '#FAB800',
-    background: '#FAB800',
+    text: '#e2b203',
+    background: '#e2b203',
+  },
+  success_100: {
+    text: '#DCFCE7',
+    background: '#DCFCE7',
+  },
+  success_300: {
+    text: '#5AC89F',
+    background: '#5AC89F',
+  },
+  success_500: {
+    text: '#13B176',
+    background: '#13B176',
+  },
+  success_700: {
+    text: '#0EA163',
+    background: '#0EA163',
   },
 };
