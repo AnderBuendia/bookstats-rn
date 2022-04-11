@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import Colors from '@Lib/constants/Colors';
 import { HomeBooks } from '@Lib/utils/fakeApiBooks';
 import { Text, View } from '@Components/generic/Theme/Themed';
-import ModalScreen from '@Views/ModalScreen';
+import LoginScreen from '@Views/LoginScreen';
 import Card from '@Components/generic/Card';
 import type { RootStackScreenProps } from '@Types/main.type';
 
@@ -19,7 +19,7 @@ const HomeScreen: FC<HomeProps> = ({ navigation, route }) => {
         <Text style={styles.title}>Bookstats</Text>
 
         <TouchableOpacity onPress={() => setShowLoginModal(true)}>
-          <View style={styles.loginButton}>
+          <View style={styles.home__loginButton}>
             <Text style={styles.loginButton__text}>Sign in for Bookstats</Text>
           </View>
         </TouchableOpacity>
@@ -52,7 +52,7 @@ const HomeScreen: FC<HomeProps> = ({ navigation, route }) => {
         </View>
       </View>
 
-      <ModalScreen
+      <LoginScreen
         showLoginModal={showLoginModal}
         handleShowLoginModal={setShowLoginModal}
       />
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     fontSize: 48,
     fontWeight: 'bold',
   },
-  loginButton: {
+  home__loginButton: {
     padding: 14,
     borderRadius: 6,
     backgroundColor: Colors.primary_500.background,

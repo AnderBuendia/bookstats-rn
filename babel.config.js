@@ -11,6 +11,7 @@ module.exports = function (api) {
           extensions: ['.ios.js', '.android.js', '.js', '.ts', '.tsx', '.json'],
           alias: {
             '@Components': './src/components/',
+            '@Domain': './src/domain/',
             '@Enums': './src/enums/',
             '@Interfaces': './src/interfaces/',
             '@Lib': './src/lib/',
