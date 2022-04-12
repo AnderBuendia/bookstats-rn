@@ -9,6 +9,7 @@ import { ColorSchemeName } from 'react-native';
 import LinkingConfiguration from '@Navigation/LinkingConfiguration';
 import LoginScreen from '@Views/LoginScreen';
 import NotFoundScreen from '@Views/NotFoundScreen';
+import BooksScreen from '@Views/BooksScreen';
 import HomeScreen from '@Views/HomeScreen';
 import type { RootStackParamList } from '@Types/main.type';
 
@@ -38,12 +39,21 @@ function RootNavigator() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
+        name="Books"
+        component={BooksScreen}
+        options={{ headerShown: true }}
+      />
+      <Stack.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: 'Oops!' }}
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
-        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen
+          name="Login"
+          component={LoginScreen}
+          options={{ headerShown: false }}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );

@@ -1,8 +1,7 @@
 import type { FC } from 'react';
 import { StyleSheet, TextInput } from 'react-native';
-import type { Noop, FieldError } from 'react-hook-form';
+import type { Noop } from 'react-hook-form';
 import Colors from 'lib/constants/Colors';
-import { Text } from '@Components/generic/Theme/Themed';
 import type { TextInputContentType } from '@Types/form.type';
 
 export interface InputProps {
@@ -10,7 +9,6 @@ export interface InputProps {
   textContent: TextInputContentType;
   secureText?: boolean;
   value: string;
-  error?: FieldError;
   textPlaceholder: string;
   handleChange: (...event: any[]) => void;
   handleBlur: Noop;
@@ -21,27 +19,22 @@ const Input: FC<InputProps> = ({
   textContent,
   secureText,
   value,
-  error,
   textPlaceholder,
   handleBlur,
   handleChange,
 }) => {
   return (
-    <>
-      <TextInput
-        style={styles.input}
-        testID={testID}
-        onChangeText={handleChange}
-        onBlur={handleBlur}
-        value={value}
-        placeholder={textPlaceholder}
-        placeholderTextColor={Colors.bg_100.text}
-        secureTextEntry={secureText}
-        textContentType={textContent}
-      />
-
-      {error && <Text>{error.message}</Text>}
-    </>
+    <TextInput
+      style={styles.input}
+      testID={testID}
+      onChangeText={handleChange}
+      onBlur={handleBlur}
+      value={value}
+      placeholder={textPlaceholder}
+      placeholderTextColor={Colors.bg_100.text}
+      secureTextEntry={secureText}
+      textContentType={textContent}
+    />
   );
 };
 
