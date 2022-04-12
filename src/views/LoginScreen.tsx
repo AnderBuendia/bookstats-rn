@@ -1,24 +1,19 @@
 import { AntDesign } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
-import type { FC, Dispatch, SetStateAction } from 'react';
-import { Image, Modal, Platform, Pressable, StyleSheet } from 'react-native';
+import type { FC } from 'react';
+import { Image, Platform, Pressable, StyleSheet } from 'react-native';
 import Colors from 'lib/constants/Colors';
 import { Text, View } from '@Components/generic/Theme/Themed';
 import LoginForm from '@Components/Forms/LoginForm';
+import type { RootStackScreenProps } from '@Types/main.type';
 
-export type LoginScreenProps = {
-  showLoginModal: boolean;
-  handleShowLoginModal: Dispatch<SetStateAction<boolean>>;
-};
+export type LoginScreenProps = RootStackScreenProps<'Login'>;
 
-const LoginScreen: FC<LoginScreenProps> = ({
-  showLoginModal,
-  handleShowLoginModal,
-}) => {
+const LoginScreen: FC<LoginScreenProps> = ({ navigation }) => {
   return (
-    <Modal visible={showLoginModal}>
+    <View style={styles.loginContainer}>
       <View style={styles.header}>
-        <Pressable onPress={() => handleShowLoginModal(!showLoginModal)}>
+        <Pressable onPress={() => navigation.navigate('Home')}>
           <AntDesign
             name="arrowleft"
             size={24}
@@ -32,19 +27,22 @@ const LoginScreen: FC<LoginScreenProps> = ({
         />
         <Text style={styles.headerTitle}>Bookstats</Text>
       </View>
+
       <View style={styles.formContainer}>
         <Text style={styles.formTitle}>Login</Text>
-
-        <LoginForm />
-
-        {/* Use a light status bar on iOS to account for the black space above the modal */}
-        <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+        <LoginForm navigation={navigation} />
       </View>
-    </Modal>
+
+      {/* Use a light status bar on iOS to account for the black space above the modal */}
+      <StatusBar style={Platform.OS === 'ios' ? 'light' : 'auto'} />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  loginContainer: {
+    flex: 1,
+  },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -52,16 +50,17 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   headerImage: {
-    marginLeft: 10,
+    marginLeft: 14,
     width: 36,
     height: 36,
   },
   headerTitle: {
+    marginLeft: 4,
     fontWeight: 'bold',
     fontSize: 18,
   },
   formContainer: {
-    flex: 1,
+    flex: 2,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -70,12 +69,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: '80%',
-  },
-  textHomeButton: {},
 });
 
 export default LoginScreen;

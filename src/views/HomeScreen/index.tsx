@@ -1,28 +1,29 @@
 import type { FC } from 'react';
-import { useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, Pressable } from 'react-native';
 import Colors from '@Lib/constants/Colors';
 import { HomeBooks } from '@Lib/utils/fakeApiBooks';
 import { Text, View } from '@Components/generic/Theme/Themed';
-import LoginScreen from '@Views/LoginScreen';
 import Card from '@Components/generic/Card';
 import type { RootStackScreenProps } from '@Types/main.type';
 
 export type HomeProps = RootStackScreenProps<'Home'>;
 
 const HomeScreen: FC<HomeProps> = ({ navigation, route }) => {
-  const [showLoginModal, setShowLoginModal] = useState<boolean>(false);
-
   return (
     <>
       <View style={styles.container}>
         <Text style={styles.title}>Bookstats</Text>
 
-        <TouchableOpacity onPress={() => setShowLoginModal(true)}>
+        <Pressable
+          style={({ pressed }) => ({
+            opacity: pressed ? 0.5 : 1,
+          })}
+          onPress={() => navigation.navigate('Login')}
+        >
           <View style={styles.home__loginButton}>
             <Text style={styles.loginButton__text}>Sign in for Bookstats</Text>
           </View>
-        </TouchableOpacity>
+        </Pressable>
 
         <View style={styles.indexTable}>
           <View style={styles.indexTable__header}>
@@ -51,11 +52,6 @@ const HomeScreen: FC<HomeProps> = ({ navigation, route }) => {
           </View>
         </View>
       </View>
-
-      <LoginScreen
-        showLoginModal={showLoginModal}
-        handleShowLoginModal={setShowLoginModal}
-      />
     </>
   );
 };

@@ -11,6 +11,12 @@ const linking: LinkingOptions<RootStackParamList> = {
           HomeScreen: 'home',
         },
       },
+      Books: {
+        screens: {
+          BooksScreen: 'books',
+        },
+      },
+      Login: 'login',
       NotFound: '*',
     },
   },
