@@ -18,7 +18,7 @@ const HomeScreen: FC<HomeProps> = ({ navigation, route }) => {
           style={({ pressed }) => ({
             opacity: pressed ? 0.5 : 1,
           })}
-          onPress={() => navigation.navigate('Login')}
+          onPress={() => navigation.navigate('Auth')}
         >
           <View style={styles.home__loginButton}>
             <Text style={styles.loginButton__text}>Sign in for Bookstats</Text>

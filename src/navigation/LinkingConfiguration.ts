@@ -16,7 +16,7 @@ const linking: LinkingOptions<RootStackParamList> = {
           BooksScreen: 'books',
         },
       },
-      Login: 'login',
+      Auth: 'auth',
       NotFound: '*',
     },
   },
