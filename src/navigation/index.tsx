@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as React from 'react';
 import { ColorSchemeName } from 'react-native';
 import LinkingConfiguration from '@Navigation/LinkingConfiguration';
-import LoginScreen from '@Views/LoginScreen';
+import AuthScreen from '@Views/AuthScreen';
 import NotFoundScreen from '@Views/NotFoundScreen';
 import BooksScreen from '@Views/BooksScreen';
 import HomeScreen from '@Views/HomeScreen';
@@ -50,8 +50,8 @@ function RootNavigator() {
       />
       <Stack.Group screenOptions={{ presentation: 'modal' }}>
         <Stack.Screen
-          name="Login"
-          component={LoginScreen}
+          name="Auth"
+          component={AuthScreen}
           options={{ headerShown: false }}
         />
       </Stack.Group>

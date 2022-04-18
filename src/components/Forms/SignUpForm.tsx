@@ -1,44 +1,39 @@
 import type { FC, Dispatch, SetStateAction } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { useAuthenticate } from '@Application/user/authenticate-user.use-case';
+import { useCreateUser } from '@Application/user/create-user.use-case';
 import Colors from '@Lib/constants/Colors';
 import { Text, View } from '@Components/generic/Theme/Themed';
 import Input from '@Components/Forms/Input';
-import { UIState } from '@Enums/config/ui-state.enum';
 import { FormMessages } from '@Enums/config/messages.enum';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import type { RootStackParamList } from '@Types/main.type';
+import { UIState } from '@Enums/config/ui-state.enum';
 
-export type LoginFormProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList, 'Auth'>;
+export type SignUpFormProps = {
   handleUiState: Dispatch<SetStateAction<UIState | null>>;
 };
 
-export type FormValuesLoginForm = {
+export type FormValuesSignUpForm = {
   email: string;
   password: string;
 };
 
-const LoginForm: FC<LoginFormProps> = ({ navigation, handleUiState }) => {
-  const { signIn } = useAuthenticate();
+const SignUpForm: FC<SignUpFormProps> = ({ handleUiState }) => {
+  const { createUser } = useCreateUser();
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<FormValuesLoginForm>();
+  } = useForm<FormValuesSignUpForm>();
 
   const onSubmit = handleSubmit(async (data) => {
     const { email, password } = data;
-    const response = await signIn(email, password);
 
-    console.log({ response });
-    if (response) navigation.navigate('Books');
+    createUser(email, password);
   });
 
   return (
     <View>
-      <Text style={styles.formTitle}>Login</Text>
+      <Text style={styles.formTitle}>Sign Up</Text>
 
       <Controller
         name="email"
@@ -97,12 +92,12 @@ const LoginForm: FC<LoginFormProps> = ({ navigation, handleUiState }) => {
       )}
 
       <Pressable style={styles.login__formButton} onPress={onSubmit}>
-        <Text style={styles.login__formButton_text}>LOGIN</Text>
+        <Text style={styles.login__formButton_text}>SIGN UP</Text>
       </Pressable>
 
-      <Pressable onPress={() => handleUiState(UIState.SIGN_UP)}>
+      <Pressable onPress={() => handleUiState(null)}>
         <Text style={styles.login__signUp_text}>
-          You don't have an account? Sign up
+          You have an account? Log in
         </Text>
       </Pressable>
     </View>
@@ -146,4 +141,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginForm;
+export default SignUpForm;
