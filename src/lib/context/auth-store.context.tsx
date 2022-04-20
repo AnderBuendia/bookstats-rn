@@ -7,7 +7,7 @@ export type AuthStoreProviderProps = {
   children: ReactNode;
 };
 
-const AuthStoreContext = createContext<any>({});
+export const AuthStoreContext = createContext<any>({});
 
 export const useAuthStore = () => {
   const context = useContext(AuthStoreContext);
@@ -21,7 +21,7 @@ export const useAuthStore = () => {
 
 export const AuthStoreProvider: FC<AuthStoreProviderProps> = ({ children }) => {
   const [user, setUser] = useState<CognitoUser | null>(null);
-  const [uiState, setUiState] = useState<UIState | null>(null);
+  const [uiState, setUiState] = useState<UIState>(UIState.SIGN_IN);
 
   const value = {
     user,

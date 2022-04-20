@@ -32,7 +32,6 @@ const LoginForm: FC<LoginFormProps> = ({ navigation, handleUiState }) => {
     const { email, password } = data;
     const response = await signIn(email, password);
 
-    console.log({ response });
     if (response) navigation.navigate('Books');
   });
 

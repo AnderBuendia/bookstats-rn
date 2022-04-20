@@ -8,7 +8,6 @@ export function useAuthenticate() {
   const signIn = async (email: string, password: string) => {
     try {
       const data = await loginRequest(email, password);
-
       return data;
     } catch (error: any) {
       setErrorState({

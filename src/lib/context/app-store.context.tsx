@@ -6,7 +6,7 @@ export type AppStoreProviderProps = {
   children: ReactNode;
 };
 
-const AppStoreContext = createContext<any>({});
+export const AppStoreContext = createContext<any>({});
 
 export const useAppStore = () => {
   const context = useContext(AppStoreContext);

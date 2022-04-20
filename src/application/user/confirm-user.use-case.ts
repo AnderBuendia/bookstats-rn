@@ -8,12 +8,8 @@ export function useConfirmUser() {
 
   const confirmUser = async (authCode: string) => {
     try {
-      console.log({ user });
       const data = await confirmUserRequest(user.getUsername(), authCode);
 
-      console.log({ data });
-
-      // // TODO ADD DATA TO USER STATE THROUGH SETSTATE
       if (data === 'SUCCESS') setUiState(null);
     } catch (error: any) {
       setErrorState({

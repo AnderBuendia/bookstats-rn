@@ -1,26 +1,23 @@
 import { Button, Text, TextInput, View } from 'react-native';
 import { render, fireEvent, waitFor } from '@Lib/utils/test.utils';
-import HomeScreen from '@Views/HomeScreen';
+import BooksScreen from '@Views/BooksScreen';
 
 const createTestProps = (props: Object) => ({
   navigation: {
     navigate: jest.fn(),
   },
-  route: {
-    name: 'Home',
-  },
   ...props,
 });
 
-describe('Test Home Screen', () => {
+describe('Test Auth Screen', () => {
   let props: any;
 
   beforeEach(() => {
     props = createTestProps({});
   });
 
-  it('Should show Bookstats title text', () => {
-    render(<HomeScreen {...props} />);
+  it('Should show Books title text', () => {
+    render(<BooksScreen {...props} />);
 
     expect(/Bookstats/i).toMatchSnapshot();
   });
