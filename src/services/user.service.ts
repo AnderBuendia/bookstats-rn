@@ -8,7 +8,6 @@ export function useUserService() {
       attributes: { email },
     });
 
-    console.log({ data });
     return data;
   };
 

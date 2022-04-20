@@ -1,8 +1,8 @@
 import type { FC } from 'react';
 import Amplify from 'aws-amplify';
-import awsmobile from './aws-exports.js';
+import awsconfig from './aws-exports';
 Amplify.configure({
-  ...awsmobile,
+  ...awsconfig,
   Analytics: { disabled: true },
 });
 import { StatusBar } from 'expo-status-bar';

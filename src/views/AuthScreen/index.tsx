@@ -17,6 +17,7 @@ export type AuthScreenProps = RootStackScreenProps<'Auth'>;
 const AuthScreen: FC<AuthScreenProps> = ({ navigation }) => {
   const { uiState, setUiState } = useAuthUserStorage();
   const { errorState, setErrorState } = useErrorStorage();
+  const sourceImage = require('../../../assets/images/book.png');
 
   useEffect(() => {
     const timeoutId = setTimeout(
@@ -26,6 +27,19 @@ const AuthScreen: FC<AuthScreenProps> = ({ navigation }) => {
 
     return () => clearTimeout(timeoutId);
   }, [errorState]);
+
+  const uiStateForm = (uiState: UIState) => {
+    switch (uiState) {
+      case UIState.SIGN_IN:
+        return <LoginForm navigation={navigation} handleUiState={setUiState} />;
+      case UIState.CONFIRM_SIGN_UP:
+        return <ConfirmSignUpForm handleUiState={setUiState} />;
+      case UIState.SIGN_UP:
+        return <SignUpForm handleUiState={setUiState} />;
+      default:
+        return <LoginForm navigation={navigation} handleUiState={setUiState} />;
+    }
+  };
 
   return (
     <View style={styles.loginContainer}>
@@ -38,10 +52,7 @@ const AuthScreen: FC<AuthScreenProps> = ({ navigation }) => {
           />
         </Pressable>
 
-        <Image
-          style={styles.headerImage}
-          source={require('../../assets/images/book.png')}
-        />
+        <Image style={styles.headerImage} source={sourceImage} />
         <Text style={styles.headerTitle}>Bookstats</Text>
       </View>
 
@@ -50,18 +61,7 @@ const AuthScreen: FC<AuthScreenProps> = ({ navigation }) => {
           <Text style={styles.errorMessage_text}>{errorState.message}</Text>
         )}
 
-        {(() => {
-          switch (uiState) {
-            case UIState.CONFIRM_SIGN_UP:
-              return <ConfirmSignUpForm handleUiState={setUiState} />;
-            case UIState.SIGN_UP:
-              return <SignUpForm handleUiState={setUiState} />;
-            default:
-              return (
-                <LoginForm navigation={navigation} handleUiState={setUiState} />
-              );
-          }
-        })()}
+        {uiState && uiStateForm(uiState)}
       </View>
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
