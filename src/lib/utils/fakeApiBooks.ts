@@ -1,0 +1,63 @@
+import { BookStatus } from 'enums/book-status.enum';
+import type { Book } from '@Interfaces/domain/book.interface';
+
+const date = new Date('2022');
+
+export const HomeBooks: Book[] = [
+  {
+    id: '1',
+    title: 'The Brothers Karamazov',
+    author: 'Dostoievsky',
+    status: BookStatus.COMPLETED,
+    rating: 80,
+    pages: 0,
+    userId: 'user1',
+    image: null,
+    review: null,
+    read_pages: [],
+    createdAt: date,
+    updatedAt: date,
+  },
+  {
+    id: '2',
+    title: 'Steppenwolf',
+    author: 'Hesse',
+    status: BookStatus.READING,
+    rating: 40,
+    pages: 20,
+    userId: 'user2',
+    image: null,
+    review: null,
+    read_pages: [],
+    createdAt: date,
+    updatedAt: date,
+  },
+  {
+    id: '3',
+    title: 'One hundred years of solitude',
+    author: 'Márquez',
+    status: BookStatus.READY,
+    rating: 20,
+    pages: 417,
+    userId: 'user3',
+    image: null,
+    review: null,
+    read_pages: [],
+    createdAt: date,
+    updatedAt: date,
+  },
+  {
+    id: '4',
+    title: 'The Symposium',
+    author: 'Plato',
+    status: BookStatus.TO_READ,
+    rating: 0,
+    pages: 111,
+    userId: 'user4',
+    image: null,
+    review: null,
+    read_pages: [],
+    createdAt: date,
+    updatedAt: date,
+  },
+];

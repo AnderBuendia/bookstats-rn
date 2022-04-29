@@ -6,15 +6,10 @@ const linking: LinkingOptions<RootStackParamList> = {
   prefixes: [Linking.makeUrl('/')],
   config: {
     screens: {
-      Root: {
-        screens: {
-          Home: {
-            screens: {
-              HomeScreen: 'home',
-            },
-          },
-        },
-      },
+      Home: 'home',
+      Auth: 'auth',
+      Books: 'books',
+      CreateBook: 'create-book',
       NotFound: '*',
     },
   },

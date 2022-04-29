@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Auth Screen Should show Books title text 1`] = `/Login/i`;
+
+exports[`Test Auth Screen Should show Login title text 1`] = `/Login/i`;

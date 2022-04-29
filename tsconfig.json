@@ -1,14 +1,21 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "allowJs": true,
     "strict": true,
     "rootDir": "./",
     "baseUrl": "./",
     "paths": {
       "*": ["src/*"],
       "@Components/*": ["src/components/*"],
+      "@Application/*": ["src/application/*"],
+      "@Domain/*": ["src/domain/*"],
+      "@Enums/*": ["src/enums/*"],
+      "@Interfaces/*": ["src/interfaces/*"],
       "@Lib/*": ["src/lib/*"],
+      "@Models/*": ["src/models/*"],
       "@Navigation/*": ["src/navigation/*"],
+      "@Services/*": ["src/services/*"],
       "@Types/*": ["src/types/*"],
       "@Views/*": ["src/views/*"]
     }

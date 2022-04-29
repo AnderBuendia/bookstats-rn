@@ -1,3 +1,4 @@
+import type { FC } from 'react';
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
 Amplify.configure({
@@ -6,11 +7,13 @@ Amplify.configure({
 });
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AuthStoreProvider } from '@Lib/context/auth-store.context';
+import { AppStoreProvider } from '@Lib/context/app-store.context';
 import useCachedResources from '@Lib/hooks/useCachedResources';
 import useColorScheme from '@Lib/hooks/useColorScheme';
 import Navigation from '@Navigation/index';
 
-export default function App() {
+const App: FC = () => {
   const isLoadingComplete = useCachedResources();
   const colorScheme = useColorScheme();
 
@@ -19,9 +22,15 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
+        <AuthStoreProvider>
+          <AppStoreProvider>
+            <Navigation colorScheme={colorScheme} />
+            <StatusBar />
+          </AppStoreProvider>
+        </AuthStoreProvider>
       </SafeAreaProvider>
     );
   }
-}
+};
+
+export default App;
