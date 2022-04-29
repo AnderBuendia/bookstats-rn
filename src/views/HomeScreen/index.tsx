@@ -1,29 +1,34 @@
 import type { FC } from 'react';
-import { StyleSheet, Pressable } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Colors from '@Lib/constants/Colors';
 import { HomeBooks } from '@Lib/utils/fakeApiBooks';
 import { Text, View } from '@Components/generic/Theme/Themed';
 import Card from '@Components/generic/Card';
+import NavigationPressable from '@Components/generic/NavigationPressable';
 import type { RootStackScreenProps } from '@Types/main.type';
+import { useAuthenticate } from '@Application/user/authenticate-user.use-case';
 
 export type HomeProps = RootStackScreenProps<'Home'>;
 
 const HomeScreen: FC<HomeProps> = ({ navigation, route }) => {
+  const { isLogged } = useAuthenticate();
+
   return (
     <>
       <View style={styles.container}>
         <Text style={styles.title}>Bookstats</Text>
 
-        <Pressable
-          style={({ pressed }) => ({
-            opacity: pressed ? 0.5 : 1,
-          })}
-          onPress={() => navigation.navigate('Auth')}
-        >
-          <View style={styles.home__loginButton}>
-            <Text style={styles.loginButton__text}>Sign in for Bookstats</Text>
-          </View>
-        </Pressable>
+        {isLogged ? (
+          <NavigationPressable
+            navigationTo={() => navigation.navigate('Books')}
+            title={'Go to your books'}
+          />
+        ) : (
+          <NavigationPressable
+            navigationTo={() => navigation.navigate('Auth')}
+            title={'Sign in for Bookstats'}
+          />
+        )}
 
         <View style={styles.indexTable}>
           <View style={styles.indexTable__header}>

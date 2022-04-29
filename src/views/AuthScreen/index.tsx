@@ -15,7 +15,7 @@ import type { RootStackScreenProps } from '@Types/main.type';
 export type AuthScreenProps = RootStackScreenProps<'Auth'>;
 
 const AuthScreen: FC<AuthScreenProps> = ({ navigation }) => {
-  const { uiState, setUiState } = useAuthUserStorage();
+  const { uiState, setUiState, user } = useAuthUserStorage();
   const { errorState, setErrorState } = useErrorStorage();
   const sourceImage = require('../../../assets/images/book.png');
 

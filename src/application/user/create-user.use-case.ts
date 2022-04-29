@@ -2,7 +2,7 @@ import { useUserService } from '@Services/user.service';
 import { useAuthUserStorage, useErrorStorage } from '@Services/storage.service';
 import { UIState } from '@Enums/config/ui-state.enum';
 
-export function useCreateUser() {
+export function useCreateUserUseCase() {
   const { createUserRequest } = useUserService();
   const { setErrorState } = useErrorStorage();
   const { setUser, setUiState } = useAuthUserStorage();

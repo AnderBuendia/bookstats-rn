@@ -4,8 +4,8 @@ export type Book = {
   id: string;
   title: string;
   author: string;
-  userId: string;
-  status: BookStatus;
+  username: string;
+  status: string;
   rating: number;
   pages: number;
   image: string | null;

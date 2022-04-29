@@ -2,7 +2,7 @@ import type { FC } from 'react';
 import { StyleSheet, TextInput } from 'react-native';
 import type { Noop } from 'react-hook-form';
 import Colors from 'lib/constants/Colors';
-import type { TextInputContentType } from '@Types/form.type';
+import type { TextInputContentType } from '@Types/forms/forms.type';
 
 export interface InputProps {
   testID: string;

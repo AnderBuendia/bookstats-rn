@@ -1,7 +1,7 @@
 import { useUserService } from '@Services/user.service';
 import { useAuthUserStorage, useErrorStorage } from '@Services/storage.service';
 
-export function useConfirmUser() {
+export function useConfirmUserUseCase() {
   const { confirmUserRequest } = useUserService();
   const { setErrorState } = useErrorStorage();
   const { user, setUiState } = useAuthUserStorage();
