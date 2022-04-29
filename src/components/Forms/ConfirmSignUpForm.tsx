@@ -1,23 +1,20 @@
 import type { FC, Dispatch, SetStateAction } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { useConfirmUser } from '@Application/user/confirm-user.use-case';
+import { useConfirmUserUseCase } from '@Application/user/confirm-user.use-case';
 import Colors from '@Lib/constants/Colors';
 import { Text, View } from '@Components/generic/Theme/Themed';
 import Input from '@Components/Forms/Input';
 import { FormMessages } from '@Enums/config/messages.enum';
 import { UIState } from '@Enums/config/ui-state.enum';
+import type { FormValuesConfirmSignUpForm } from '@Types/forms/confirm-signup-form.type';
 
 export type ConfirmSignUpFormProps = {
   handleUiState: Dispatch<SetStateAction<UIState | null>>;
 };
 
-export type FormValuesConfirmSignUpForm = {
-  authCode: string;
-};
-
 const SignUpForm: FC<ConfirmSignUpFormProps> = ({ handleUiState }) => {
-  const { confirmUser } = useConfirmUser();
+  const { confirmUser } = useConfirmUserUseCase();
   const {
     handleSubmit,
     control,
@@ -65,7 +62,7 @@ const SignUpForm: FC<ConfirmSignUpFormProps> = ({ handleUiState }) => {
         <Text style={styles.login__formButton_text}>CONFIRM ACCOUNT</Text>
       </Pressable>
 
-      <Pressable onPress={() => handleUiState(null)}>
+      <Pressable onPress={() => handleUiState(UIState.SIGN_IN)}>
         <Text style={styles.login__signUp_text}>Back to Login</Text>
       </Pressable>
     </View>

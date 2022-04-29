@@ -1,24 +1,20 @@
 import type { FC, Dispatch, SetStateAction } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { useCreateUser } from '@Application/user/create-user.use-case';
+import { useCreateUserUseCase } from '@Application/user/create-user.use-case';
 import Colors from '@Lib/constants/Colors';
 import { Text, View } from '@Components/generic/Theme/Themed';
 import Input from '@Components/Forms/Input';
 import { FormMessages } from '@Enums/config/messages.enum';
 import { UIState } from '@Enums/config/ui-state.enum';
+import type { FormValuesSignUpForm } from '@Types/forms/signup-form.type';
 
 export type SignUpFormProps = {
   handleUiState: Dispatch<SetStateAction<UIState | null>>;
 };
 
-export type FormValuesSignUpForm = {
-  email: string;
-  password: string;
-};
-
 const SignUpForm: FC<SignUpFormProps> = ({ handleUiState }) => {
-  const { createUser } = useCreateUser();
+  const { createUser } = useCreateUserUseCase();
   const {
     handleSubmit,
     control,
@@ -95,7 +91,7 @@ const SignUpForm: FC<SignUpFormProps> = ({ handleUiState }) => {
         <Text style={styles.login__formButton_text}>SIGN UP</Text>
       </Pressable>
 
-      <Pressable onPress={() => handleUiState(null)}>
+      <Pressable onPress={() => handleUiState(UIState.SIGN_IN)}>
         <Text style={styles.login__signUp_text}>
           You have an account? Log in
         </Text>

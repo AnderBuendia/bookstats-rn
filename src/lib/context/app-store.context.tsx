@@ -1,5 +1,6 @@
 import type { FC, ReactNode } from 'react';
 import { useState, createContext, useContext } from 'react';
+import type { Book } from '@Models/index';
 import type { ErrorState } from '@Interfaces/config/errors.interface';
 
 export type AppStoreProviderProps = {
@@ -19,10 +20,13 @@ export const useAppStore = () => {
 };
 
 export const AppStoreProvider: FC<AppStoreProviderProps> = ({ children }) => {
+  const [books, setBooks] = useState<Book[]>([]);
   const [errorState, setErrorState] = useState<ErrorState>({ hasError: false });
 
   const value = {
+    books,
     errorState,
+    setBooks,
     setErrorState,
   };
 

@@ -1,0 +1,14 @@
+type Book @model @auth(rules: [{ allow: private }]) {
+  id: ID!
+  title: String!
+  author: String!
+  status: String!
+  rating: Int
+  pages: Int!
+  username: String!
+  review: String
+  image: String
+  read_pages: [Int]
+  createdAt: AWSDateTime
+  updatedAt: AWSDateTime
+}

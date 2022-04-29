@@ -16,6 +16,7 @@ module.exports = function (api) {
             '@Enums': './src/enums/',
             '@Interfaces': './src/interfaces/',
             '@Lib': './src/lib/',
+            '@Models': './src/models/',
             '@Navigation': './src/navigation/',
             '@Services': './src/services/',
             '@Types': './src/types/',

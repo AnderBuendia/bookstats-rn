@@ -9,15 +9,11 @@ import { UIState } from '@Enums/config/ui-state.enum';
 import { FormMessages } from '@Enums/config/messages.enum';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import type { RootStackParamList } from '@Types/main.type';
+import type { FormValuesLoginForm } from '@Types/forms/login-form.type';
 
 export type LoginFormProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Auth'>;
   handleUiState: Dispatch<SetStateAction<UIState | null>>;
-};
-
-export type FormValuesLoginForm = {
-  email: string;
-  password: string;
 };
 
 const LoginForm: FC<LoginFormProps> = ({ navigation, handleUiState }) => {
@@ -31,6 +27,8 @@ const LoginForm: FC<LoginFormProps> = ({ navigation, handleUiState }) => {
   const onSubmit = handleSubmit(async (data) => {
     const { email, password } = data;
     const response = await signIn(email, password);
+
+    console.log({ response });
 
     if (response) navigation.navigate('Books');
   });

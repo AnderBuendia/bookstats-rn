@@ -11,5 +11,13 @@ export function useAuthService() {
     }
   };
 
-  return { loginRequest };
+  const logoutRequest = async () => {
+    try {
+      await Auth.signOut();
+    } catch (error: any) {
+      throw error;
+    }
+  };
+
+  return { loginRequest, logoutRequest };
 }

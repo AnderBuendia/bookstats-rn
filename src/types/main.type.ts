@@ -8,8 +8,9 @@ declare global {
 
 export type RootStackParamList = {
   Home: undefined;
-  Books: undefined;
   Auth: undefined;
+  Books: undefined;
+  CreateBook: undefined;
   NotFound: undefined;
 };
 

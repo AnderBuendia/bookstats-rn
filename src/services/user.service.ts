@@ -2,19 +2,27 @@ import { Auth } from 'aws-amplify';
 
 export function useUserService() {
   const createUserRequest = async (email: string, password: string) => {
-    const data = await Auth.signUp({
-      username: email,
-      password,
-      attributes: { email },
-    });
+    try {
+      const data = await Auth.signUp({
+        username: email,
+        password,
+        attributes: { email },
+      });
 
-    return data;
+      return data;
+    } catch (error: any) {
+      throw error;
+    }
   };
 
   const confirmUserRequest = async (email: string, authCode: string) => {
-    const data = await Auth.confirmSignUp(email, authCode);
+    try {
+      const data = await Auth.confirmSignUp(email, authCode);
 
-    return data;
+      return data;
+    } catch (error: any) {
+      throw error;
+    }
   };
 
   return { createUserRequest, confirmUserRequest };
