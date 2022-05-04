@@ -9,7 +9,7 @@ export declare class Book {
   readonly title: string;
   readonly author: string;
   readonly status: string;
-  readonly rating?: number;
+  readonly rating: number;
   readonly pages: number;
   readonly username: string;
   readonly review?: string;

@@ -1,14 +1,19 @@
 import type { FC } from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { StyleSheet, Pressable } from 'react-native';
 import { useFindBooksUseCase } from '@Application/book/find-books.use-case';
 import { useBooksStorage } from '@Services/storage.service';
 import Colors from '@Lib/constants/Colors';
 import { View, Text } from '@Components/generic/Theme/Themed';
+import Card from '@Components/generic/Card';
 import type { RootStackScreenProps } from '@Types/main.type';
 
+import { DataStore } from '@aws-amplify/datastore';
+import { Book } from '@Models/index';
+
 export type BooksScreenProps = RootStackScreenProps<'Books'>;
-const BooksScreen: FC<BooksScreenProps> = ({ navigation }) => {
+
+const BooksScreen: FC<BooksScreenProps> = ({ navigation, route }) => {
   const { books, setBooks } = useBooksStorage();
   const { findBooks } = useFindBooksUseCase();
 
@@ -21,8 +26,6 @@ const BooksScreen: FC<BooksScreenProps> = ({ navigation }) => {
 
     if (response) setBooks(response);
   }
-
-  console.log({ b: books[0]?.author });
 
   return (
     <View style={styles.booksContainer}>
@@ -37,6 +40,10 @@ const BooksScreen: FC<BooksScreenProps> = ({ navigation }) => {
             <Text style={styles.createBookButton__text}>Create Book</Text>
           </View>
         </Pressable>
+      </View>
+
+      <View style={styles.cardsBooks}>
+        <Card books={books} route={route} />
       </View>
     </View>
   );
@@ -73,7 +80,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   createBookButton: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 16,
     paddingVertical: 6,
     borderRadius: 6,
     backgroundColor: Colors.secondary_500.background,
@@ -82,9 +89,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   booksView: {
-    flex: 2,
+    marginTop: 16,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  cardsBooks: {
+    flex: 2,
+    paddingHorizontal: 30,
+    paddingVertical: 16,
   },
 });
 
