@@ -1,9 +1,9 @@
-type Book @model @auth(rules: [{ allow: private }]) {
+type Book @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String!
   author: String!
   status: String!
-  rating: Int
+  rating: Int!
   pages: Int!
   username: String!
   review: String

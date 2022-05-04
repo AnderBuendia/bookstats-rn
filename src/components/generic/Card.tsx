@@ -6,11 +6,11 @@ import { getColorStatus } from '@Domain/book.domain';
 import { Text, View } from '@Components/generic/Theme/Themed';
 import StarRating from '@Components/generic/StarRating';
 import type { RootStackParamList } from '@Types/main.type';
-import type { Book } from '@Interfaces/domain/book.interface';
+import type { Book } from '@Models/index';
 
 export type CardProps = {
   books: Book[];
-  route: RouteProp<RootStackParamList, 'Home'>;
+  route: RouteProp<RootStackParamList, 'Home' | 'Books'>;
 };
 
 const Card: FC<CardProps> = ({ books, route }) => {
@@ -32,7 +32,11 @@ const Card: FC<CardProps> = ({ books, route }) => {
                   {book.status}
                 </Text>
 
-                <StarRating route={route} book={book} />
+                <StarRating
+                  route={route}
+                  bookId={book.id}
+                  rating={book.rating}
+                />
               </DefaultView>
             </View>
           </Pressable>
