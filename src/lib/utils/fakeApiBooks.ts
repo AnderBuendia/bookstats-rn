@@ -1,7 +1,7 @@
 import { BookStatus } from 'enums/book-status.enum';
-import type { Book } from '@Interfaces/domain/book.interface';
+import type { Book } from '@Models/index';
 
-const date = new Date('2022');
+const currentDate = new Date('2022');
 
 export const HomeBooks: Book[] = [
   {
@@ -11,12 +11,12 @@ export const HomeBooks: Book[] = [
     status: BookStatus.COMPLETED,
     rating: 80,
     pages: 0,
-    userId: 'user1',
-    image: null,
-    review: null,
+    username: 'user1',
+    image: undefined,
+    review: undefined,
     read_pages: [],
-    createdAt: date,
-    updatedAt: date,
+    createdAt: String(currentDate),
+    updatedAt: String(currentDate),
   },
   {
     id: '2',
@@ -25,12 +25,12 @@ export const HomeBooks: Book[] = [
     status: BookStatus.READING,
     rating: 40,
     pages: 20,
-    userId: 'user2',
-    image: null,
-    review: null,
+    username: 'user2',
+    image: undefined,
+    review: undefined,
     read_pages: [],
-    createdAt: date,
-    updatedAt: date,
+    createdAt: String(currentDate),
+    updatedAt: String(currentDate),
   },
   {
     id: '3',
@@ -39,12 +39,12 @@ export const HomeBooks: Book[] = [
     status: BookStatus.READY,
     rating: 20,
     pages: 417,
-    userId: 'user3',
-    image: null,
-    review: null,
+    username: 'user3',
+    image: undefined,
+    review: undefined,
     read_pages: [],
-    createdAt: date,
-    updatedAt: date,
+    createdAt: String(currentDate),
+    updatedAt: String(currentDate),
   },
   {
     id: '4',
@@ -53,11 +53,11 @@ export const HomeBooks: Book[] = [
     status: BookStatus.TO_READ,
     rating: 0,
     pages: 111,
-    userId: 'user4',
-    image: null,
-    review: null,
+    username: 'user4',
+    image: undefined,
+    review: undefined,
     read_pages: [],
-    createdAt: date,
-    updatedAt: date,
+    createdAt: String(currentDate),
+    updatedAt: String(currentDate),
   },
 ];

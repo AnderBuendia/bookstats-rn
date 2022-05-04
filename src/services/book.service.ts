@@ -1,6 +1,12 @@
 import { CreateBookDTO } from '@Lib/dto/book.dto';
 import { DataStore } from '@aws-amplify/datastore';
-import { Book } from 'models';
+import { Book } from '@Models/index';
+import Amplify from 'aws-amplify';
+import awsconfig from '../aws-exports';
+Amplify.configure({
+  ...awsconfig,
+  Analytics: { disabled: true },
+});
 
 export function useBookService() {
   const findBooksRequest = async (username: string) => {
@@ -25,5 +31,21 @@ export function useBookService() {
     }
   };
 
-  return { findBooksRequest, createBookRequest };
+  const updateRatingBookRequest = async (bookId: string, rate: number) => {
+    try {
+      const book = await DataStore.query(Book, bookId);
+
+      if (book) {
+        await DataStore.save(
+          Book.copyOf(book, (updated) => {
+            updated.rating = rate;
+          })
+        );
+      }
+    } catch (error: any) {
+      throw error;
+    }
+  };
+
+  return { findBooksRequest, createBookRequest, updateRatingBookRequest };
 }
